@@ -172,3 +172,8 @@ a.card:hover { border-color: var(--accent); transform: translateY(-2px); color: 
 .list-check li { padding-left: 1.75rem; position: relative; margin-bottom: 0.5rem; }
 .list-check li::before { content: "\2713"; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
 .post-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+/* Video */
+.video-wide { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); background: #000; }
+.video-tall { width: 100%; max-width: 360px; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius); background: #000; margin-inline: auto; }
+@media (prefers-reduced-motion: reduce) { video[autoplay] { display: none; } }

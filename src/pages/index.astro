@@ -94,6 +94,17 @@ const schema = [
     </div>
   </section>
 
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <p class="eyebrow">See it</p>
+      <h2>What a silent disco looks like</h2>
+      <video class="video-wide" autoplay muted loop playsinline preload="metadata" poster="/images/crowd-loop-poster.webp" aria-label="DJ's view of a crowd dancing in glowing silent disco headsets">
+        <source src="/videos/crowd-loop.mp4" type="video/mp4" />
+      </video>
+      <p class="muted" style="margin-top: 1rem;">From the DJ table at a Mobile event. Every color is a different channel.</p>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap grid grid-2" style="align-items: center;">
       <div>
@@ -116,7 +127,7 @@ const schema = [
     </div>
   </section>
 
-  <section class="section" style="background: var(--surface);">
+  <section class="section">
     <div class="wrap">
       <h2>Common questions</h2>
       <Faq items={faqs} />
