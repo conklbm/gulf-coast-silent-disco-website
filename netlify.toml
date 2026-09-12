@@ -3,7 +3,7 @@
   publish = "dist"
 
 # Kill the duplicate host: send the Netlify subdomain to the canonical domain.
-# TODO: replace gulf-coast-silent-disco with the actual Netlify site name after creating the site.
+# Only meaningful once www.gulfcoastsilentdisco.com points at Netlify; harmless before that for git deploys, but strip it from manual drop previews.
 [[redirects]]
   from = "https://gulf-coast-silent-disco.netlify.app/*"
   to = "https://www.gulfcoastsilentdisco.com/:splat"
