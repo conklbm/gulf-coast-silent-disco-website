@@ -21,10 +21,10 @@ export const site = {
   },
   // Web3Forms. Public access key from https://web3forms.com (safe to expose).
   formEndpoint: 'https://api.web3forms.com/submit',
-  web3formsKey: 'YOUR_ACCESS_KEY', // TODO
+  web3formsKey: 'a91d2a89-ab01-4120-bd53-e31ed849387d',
   // Existing Google Form, kept as a fallback link.
   googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLScgSyofi6fPG9TmCLxQfLWQ0RA9MRMKfTSjVhVgAePSwTzaLA/viewform?usp=header',
-  founded: 2023, // TODO confirm year of the 40th birthday party
+  founded: 2023,
   ownerName: 'Brooks Conkle',
 };
 
