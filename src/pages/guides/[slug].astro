@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection, render } from 'astro:content';
+import { site, SITE_URL } from '../../site';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((g) => ({ params: { slug: g.id }, props: { guide: g } }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.data.title,
+    description: guide.data.description,
+    datePublished: guide.data.date.toISOString(),
+    dateModified: (guide.data.updated ?? guide.data.date).toISOString(),
+    author: { '@type': 'Organization', name: site.name, url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#business` },
+    mainEntityOfPage: new URL(Astro.url.pathname, SITE_URL).href,
+  },
+];
+---
+
+<Base title={guide.data.title} description={guide.data.description} schema={schema} ogType="article">
+  <article class="section-tight">
+    <div class="wrap prose">
+      <p class="eyebrow"><a href="/guides/" style="color: inherit; text-decoration: none;">Guides</a></p>
+      <h1>{guide.data.title}</h1>
+      <p class="post-meta">{fmt(guide.data.date)}{guide.data.updated && ` · Updated ${fmt(guide.data.updated)}`}</p>
+      <Content />
+    </div>
+  </article>
+  <CtaBand />
+</Base>

@@ -1,0 +1,108 @@
+---
+import { site } from '../site';
+---
+
+<form class="form" id="quote-form" action={site.formEndpoint} method="POST" novalidate>
+  <div class="form-row">
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" />
+    </div>
+    <div class="field">
+      <label for="date">Event date</label>
+      <input id="date" name="event_date" type="date" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="type">Event type</label>
+      <select id="type" name="event_type" required>
+        <option value="">Choose one</option>
+        <option>Wedding</option>
+        <option>Corporate event</option>
+        <option>Birthday or private party</option>
+        <option>School or church event</option>
+        <option>Bar, venue, or public event</option>
+        <option>Fitness or yoga</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="guests">Guest count</label>
+      <input id="guests" name="guest_count" type="number" min="1" inputmode="numeric" placeholder="Approximate is fine" />
+    </div>
+  </div>
+  <div class="field">
+    <label for="service">What do you need?</label>
+    <select id="service" name="service" required>
+      <option value="">Choose one</option>
+      <option>Rental only (I have my own music or DJ)</option>
+      <option>Rental + DJ</option>
+      <option>Not sure yet</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="location">Venue or city</label>
+    <input id="location" name="location" type="text" placeholder="Fairhope, AL" />
+  </div>
+  <div class="field">
+    <label for="message">Anything else?</label>
+    <textarea id="message" name="message" placeholder="Timeline, indoor or outdoor, questions"></textarea>
+  </div>
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+  <input type="hidden" name="_subject" value="New quote request from gulfcoastsilentdisco.com" />
+
+  <div class="form-msg" id="form-msg" hidden role="status" aria-live="polite"></div>
+
+  <div>
+    <button class="btn btn-primary" type="submit">Send request</button>
+  </div>
+  <p class="muted" style="font-size: 0.875rem; margin: 0;">
+    By sending, you agree to our <a href="/privacy/">privacy policy</a>. We only use this to reply to you.
+  </p>
+</form>
+
+<script>
+  const form = document.getElementById('quote-form') as HTMLFormElement | null;
+  const msg = document.getElementById('form-msg') as HTMLDivElement | null;
+  const show = (state: 'ok' | 'error', text: string) => {
+    if (!msg) return;
+    msg.hidden = false;
+    msg.dataset.state = state;
+    msg.textContent = text;
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      if (res.ok) {
+        form.reset();
+        show('ok', 'Request sent. We reply within one business day.');
+      } else {
+        show('error', 'Couldn’t send. Try again or use the Google Form link below.');
+      }
+    } catch {
+      show('error', 'Couldn’t send. Check your connection and try again.');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Send request'; }
+    }
+  });
+</script>

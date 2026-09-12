@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site, equipment, pricing, usd } from '../../site';
+---
+
+<Base title="Silent Disco Wedding Rentals in Mobile & Baldwin County" description={`Silent disco headsets and DJs for wedding receptions across the ${site.areaShort}. Beat venue noise curfews and keep the dance floor full.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Weddings</p>
+      <h1>Silent disco weddings</h1>
+      <p class="lead">The reception keeps going after the venue's noise curfew. Grandparents get the oldies, your friends get the hits.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+        <a class="btn btn-outline" href="/rentals/">See pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2">
+      <div>
+        <h2>Why couples choose it</h2>
+        <ul class="list-check">
+          <li>Dance past noise ordinances at beach and outdoor venues</li>
+          <li>{equipment.channels} channels: one for each crowd at your wedding</li>
+          <li>Guests can still talk at the tables without shouting</li>
+          <li>LED headsets look incredible in photos and video</li>
+          <li>Works as an after-party add-on to a traditional DJ or band</li>
+        </ul>
+      </div>
+      <div>
+        <h2>How it usually runs</h2>
+        <p class="muted">Most couples run a regular reception through dinner and the first dances, then switch to headsets for the last two or three hours. We set up during dinner and hand headsets out as the dance floor opens.</p>
+        <p class="muted">Bring your own DJ with a rental from {usd(pricing.rentalOnly.startingAt)}, or book the rental + DJ package from {usd(pricing.djPackage.startingAt)}.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap grid grid-2" style="align-items: center;">
+      <div>
+        <h2>Popular Gulf Coast wedding venues</h2>
+        <p class="muted">We work beach ceremonies in Gulf Shores and Orange Beach, historic venues in downtown Mobile, and waterfront receptions in Fairhope and Daphne. If your venue has a sound curfew, we are the workaround.</p>
+        <p><a href="/guides/silent-disco-wedding-guide/">Read the silent disco wedding guide</a></p>
+      </div>
+      <img
+        src="/images/guest-sequins.webp"
+        srcset="/images/guest-sequins-480.webp 480w, /images/guest-sequins.webp 900w"
+        sizes="(min-width: 640px) 50vw, 100vw"
+        width="900" height="612" loading="lazy"
+        alt="Guest in a sequined jacket and sunglasses dancing in green-lit headsets"
+        style="border-radius: var(--radius);"
+      />
+    </div>
+  </section>
+
+  <CtaBand title="Planning a wedding?" text="Send your date and guest count. We hold dates on a first-come basis." />
+</Base>

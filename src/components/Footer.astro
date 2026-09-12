@@ -1,0 +1,49 @@
+---
+import { site } from '../site';
+const year = new Date().getFullYear();
+const socials = Object.entries(site.social).filter(([, url]) => url);
+const labels: Record<string, string> = { instagram: 'Instagram', facebook: 'Facebook' };
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="grid grid-3">
+      <div>
+        <a class="logo" href="/">{site.name}</a>
+        <p style="margin-top: 0.75rem;">{site.tagline}. Serving {site.areaLong}.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/rentals/">Equipment rentals</a></li>
+          <li><a href="/events/">Event types</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="/contact/">Request a quote</a></li>
+          {site.phone && <li><a href={site.phoneHref}>{site.phone}</a></li>}
+          {site.email && <li><a href={`mailto:${site.email}`}>{site.email}</a></li>}
+          {socials.length > 0 && (
+            <li>
+              {socials.map(([key, url], i) => (
+                <>
+                  {i > 0 && ' · '}
+                  <a href={url} target="_blank" rel="noopener noreferrer">{labels[key]}<span class="sr-only"> (opens in new tab)</span></a>
+                </>
+              ))}
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {year} {site.name}</span>
+      <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    </div>
+  </div>
+</footer>

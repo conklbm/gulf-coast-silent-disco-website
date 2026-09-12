@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { site } from '../site';
+---
+
+<Base title="Get a Silent Disco Quote" description={`Request a quote for a silent disco rental or DJ package in the ${site.areaShort}. We reply within one business day.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Get a quote</h1>
+      <p class="lead">Send the basics and we'll reply within one business day with availability and pricing.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap grid grid-2" style="align-items: start;">
+      <div class="card">
+        <QuoteForm />
+      </div>
+      <div>
+        {(site.phone || site.email) && (
+          <>
+            <h2>Prefer to call or email?</h2>
+            <p>
+              {site.phone && <a href={site.phoneHref}>{site.phone}</a>}
+              {site.phone && site.email && <br />}
+              {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+            </p>
+          </>
+        )}
+        <h3>Service area</h3>
+        <p class="muted">{site.areaLong}. Ask about travel beyond the {site.areaShort}.</p>
+        <h3>Helpful to include</h3>
+        <ul class="muted">
+          <li>Event date and start time</li>
+          <li>Expected guest count</li>
+          <li>Venue name or city</li>
+          <li>Whether you have your own DJ</li>
+        </ul>
+        <p class="muted" style="font-size: 0.9rem;">
+          Form not working? <a href={site.googleForm} target="_blank" rel="noopener noreferrer">Use our Google Form instead<span class="sr-only"> (opens in new tab)</span></a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

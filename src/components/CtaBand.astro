@@ -1,0 +1,19 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+}
+const { title = 'Ready to plan your silent disco?', text = 'Tell us the date and headcount. We reply within one business day.' } = Astro.props;
+---
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <div class="btn-row" style="justify-content: center;">
+        <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { site, equipment, pricing, usd } from '../site';
+
+const title = 'Silent Disco Equipment Rentals in Mobile, AL';
+const description = `Rent silent disco headsets and transmitters in the ${site.areaShort}. Rental only from ${usd(pricing.rentalOnly.startingAt)}, with DJ from ${usd(pricing.djPackage.startingAt)}. Delivery, setup, and pickup included.`;
+
+const faqs = [
+  { q: 'What is included in a rental?', a: `Wireless ${equipment.channels}-channel headsets, a transmitter for each channel, cables to connect your DJ gear or phone, delivery, setup, and pickup.` },
+  { q: 'How many headsets can I rent?', a: `We have ${equipment.headphoneCount} headsets. Tell us your headcount and we'll size the order with you.` },
+  { q: 'How long is the rental?', a: 'Pricing covers your event. Multi-day rentals are available on request.' },
+  { q: 'What if a headset is lost or damaged?', a: 'We count headsets in and out. Lost or damaged units are billed at replacement cost, which we list on your quote.' },
+  { q: 'How do I hold a date?', a: 'Request a quote. Booking terms, deposit, and payment details come with it.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Silent disco equipment rental',
+    provider: { '@id': `${Astro.site}#business` },
+    areaServed: site.cities.map((c) => `${c}, AL`),
+    offers: [
+      { '@type': 'Offer', name: pricing.rentalOnly.label, price: pricing.rentalOnly.startingAt, priceCurrency: 'USD', description: `Starting at ${usd(pricing.rentalOnly.startingAt)} ${pricing.rentalOnly.unit}` },
+      { '@type': 'Offer', name: pricing.djPackage.label, price: pricing.djPackage.startingAt, priceCurrency: 'USD', description: `Starting at ${usd(pricing.djPackage.startingAt)} ${pricing.djPackage.unit}` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base title={title} description={description} schema={schema}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Equipment rentals</p>
+      <h1>Silent disco equipment rentals</h1>
+      <p class="lead">Everything you need to run a silent disco, delivered and set up anywhere in the {site.areaShort}.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <h2>Packages</h2>
+      <div class="grid grid-2">
+        <div class="card" id="rental">
+          <p class="eyebrow">Bring your own music</p>
+          <h3>Rental only</h3>
+          <p class="price">From {usd(pricing.rentalOnly.startingAt)} <small>{pricing.rentalOnly.unit}</small></p>
+          <p class="muted">For events with their own DJ, band, or playlist.</p>
+          <ul class="list-check">
+            <li>Wireless {equipment.channels}-channel headsets</li>
+            <li>{equipment.channels} transmitters with all cables</li>
+            <li>Works with any DJ mixer, laptop, or phone</li>
+            <li>Delivery, setup, and pickup</li>
+          </ul>
+          <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+        </div>
+        <div class="card" id="dj">
+          <p class="eyebrow">Full service</p>
+          <h3>Rental + DJ</h3>
+          <p class="price">From {usd(pricing.djPackage.startingAt)} <small>{pricing.djPackage.unit}</small></p>
+          <p class="muted">We bring the headsets and a DJ who runs all {equipment.channels} channels.</p>
+          <ul class="list-check">
+            <li>Everything in rental only</li>
+            <li>Professional DJ for the event</li>
+            <li>Custom playlists per channel</li>
+            <li>Mic for toasts and announcements</li>
+            <li>On-site tech the whole night</li>
+          </ul>
+          <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="card" id="favors" style="margin-top: 1.25rem; display: grid; gap: 1.25rem; align-items: center;" data-favors>
+        <img
+          src="/images/party-favors.webp"
+          width="472" height="379" loading="lazy"
+          alt="Glow sticks, LED shutter glasses, and a Mobile Rundown headset on a table"
+          style="border-radius: 10px;"
+        />
+        <div>
+          <p class="eyebrow">Add-on</p>
+          <h3>{pricing.partyFavors.label}</h3>
+          <p class="muted">{pricing.partyFavors.blurb} Ask for it on your quote.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 1rem; font-size: 0.9rem;">Starting prices. Final quote depends on headcount, date, and location.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <h2>The equipment</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Headsets</h3>
+          <p class="muted">Over-ear wireless headsets with {equipment.channels} channels, an LED color per channel, individual volume control, and a battery that lasts {equipment.batteryLife}. Sanitized between every event.</p>
+        </div>
+        <div class="card">
+          <h3>Transmitters</h3>
+          <p class="muted">One transmitter per channel. Plugs into any mixer, laptop, or phone with a standard audio cable. Covers a full venue, tent, or beach.</p>
+        </div>
+        <div class="card">
+          <h3>Inventory</h3>
+          <p class="muted">{equipment.headphoneCount} headsets in stock. Larger events can be accommodated with advance notice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items: center;">
+      <div>
+        <h2>What happens on event day</h2>
+        <ol class="steps">
+          <li><strong>Arrival.</strong> We show up before your guests, usually 60 to 90 minutes ahead.</li>
+          <li><strong>Setup.</strong> Transmitters connect to your audio source. We test every channel.</li>
+          <li><strong>Distribution.</strong> Headsets go out from a table or we hand them out at the door.</li>
+          <li><strong>Pickup.</strong> We collect and count headsets at the end. You walk away.</li>
+        </ol>
+      </div>
+      <img
+        src="/images/two-guests.webp"
+        srcset="/images/two-guests-480.webp 480w, /images/two-guests.webp 899w"
+        sizes="(min-width: 640px) 50vw, 100vw"
+        width="899" height="694" loading="lazy"
+        alt="Two guests grinning in green-lit silent disco headsets"
+        style="border-radius: var(--radius);"
+      />
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <h2>Rental questions</h2>
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand title="Need a quote for your date?" text="Send your headcount and venue. We confirm availability within one business day." />
+</Base>
+
+<style>
+  @media (min-width: 640px) {
+    [data-favors] { grid-template-columns: 240px 1fr; }
+  }
+</style>

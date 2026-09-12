@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { site, equipment, pricing, usd } from '../site';
+
+const faqs = [
+  { q: 'How does a silent disco work?', a: `Guests wear wireless headphones that receive music from our transmitters. Each headphone has ${equipment.channels} channels, so guests pick the music they like and can switch any time. No speakers, no noise complaints.` },
+  { q: 'How many headphones do I need?', a: 'Plan on one headphone for every guest you expect on the floor at once, typically 60 to 80 percent of your total guest count. When in doubt, add a few extra.' },
+  { q: 'Do you deliver and set up?', a: `Yes. We deliver, set up, and pick up across the ${site.areaShort}. Setup takes about 30 minutes.` },
+  { q: 'Can I use my own DJ or playlist?', a: 'Absolutely. Our transmitters plug into any DJ mixer, laptop, or phone. Rent the equipment only, or add one of our DJs.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base title={`${site.name} | Silent Disco Rentals & DJs in Mobile, AL`} description={site.description} schema={schema}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Serving the {site.areaShort}</p>
+        <h1>Silent disco rentals and DJs for the <span>Gulf Coast</span></h1>
+        <p class="lead">Wireless headphones, {equipment.channels} music channels, and zero noise complaints. Weddings, corporate events, and parties.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+          <a class="btn btn-outline" href="/rentals/">See rentals &amp; pricing</a>
+        </div>
+      </div>
+      <img
+        class="hero-img"
+        src="/images/three-friends.webp"
+        srcset="/images/three-friends-480.webp 480w, /images/three-friends.webp 877w"
+        sizes="(min-width: 900px) 40vw, 100vw"
+        width="877" height="552"
+        alt="Three friends smiling in glowing blue silent disco headphones"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap grid grid-3">
+      <div class="stat"><strong>{equipment.headphoneCount}</strong><span class="muted">wireless headsets</span></div>
+      <div class="stat"><strong>{equipment.channels}</strong><span class="muted">music channels per headset</span></div>
+      <div class="stat"><strong>{usd(pricing.rentalOnly.startingAt)}</strong><span class="muted">starting price per event</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What we offer</p>
+      <h2>Two ways to book</h2>
+      <div class="grid grid-2">
+        <a class="card" href="/rentals/#rental">
+          <div class="card-icon" aria-hidden="true">🎧</div>
+          <h3>Rental only</h3>
+          <p class="muted">Bring your own DJ or playlist. We deliver headsets and transmitters, set up, and pick up.</p>
+          <p class="price">From {usd(pricing.rentalOnly.startingAt)} <small>{pricing.rentalOnly.unit}</small></p>
+        </a>
+        <a class="card" href="/rentals/#dj">
+          <div class="card-icon" aria-hidden="true">🎛️</div>
+          <h3>Rental + DJ</h3>
+          <p class="muted">Full package. Our DJ runs all {equipment.channels} channels, reads the room, and keeps every headset lit up.</p>
+          <p class="price">From {usd(pricing.djPackage.startingAt)} <small>{pricing.djPackage.unit}</small></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <p class="eyebrow">Events</p>
+      <h2>Built for any crowd</h2>
+      <div class="grid grid-3">
+        <a class="card" href="/events/weddings/">
+          <h3>Weddings</h3>
+          <p class="muted">Keep the reception going past venue noise curfews. {equipment.channels} channels means every generation dances.</p>
+        </a>
+        <a class="card" href="/events/corporate/">
+          <h3>Corporate events</h3>
+          <p class="muted">Holiday parties, team offsites, and conference after-hours. Easy to brand, easy to run.</p>
+        </a>
+        <a class="card" href="/events/parties/">
+          <h3>Parties &amp; more</h3>
+          <p class="muted">Birthdays, school dances, church youth nights, bar takeovers, and silent yoga.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items: center;">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2>Booking takes three steps</h2>
+        <ol class="steps">
+          <li><strong>Request a quote.</strong> Send your date, headcount, and venue. We confirm availability within one business day.</li>
+          <li><strong>We deliver and set up.</strong> Headsets arrive charged and sanitized. Setup takes about 30 minutes.</li>
+          <li><strong>You dance, we pack up.</strong> After the event we collect everything. No cleanup for you.</li>
+        </ol>
+      </div>
+      <img
+        src="/images/dance-floor.webp"
+        srcset="/images/dance-floor-480.webp 480w, /images/dance-floor.webp 899w"
+        sizes="(min-width: 640px) 50vw, 100vw"
+        width="899" height="406" loading="lazy"
+        alt="Crowded dance floor at a silent disco, headsets glowing green, red, and blue"
+        style="border-radius: var(--radius);"
+      />
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <h2>Common questions</h2>
+      <Faq items={faqs} />
+      <p style="margin-top: 1.5rem;"><a href="/faq/">See all FAQs</a></p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

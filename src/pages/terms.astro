@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+---
+
+<Base title="Terms of Service" description={`Terms for using the ${site.name} website and booking our rental and DJ services.`}>
+  <section class="section-tight">
+    <div class="wrap prose">
+      <h1>Terms of Service</h1>
+      <p class="post-meta">Last updated: September 12, 2026</p>
+
+      <h2>Website use</h2>
+      <p>By using this website you agree to these terms. The content on this site is provided for general information about our services. Pricing shown as "starting at" is a floor, not a quote. Final pricing is confirmed in a written quote.</p>
+
+      <h2>Quotes and bookings</h2>
+      <p>A quote request through this website is not a booking. A booking is confirmed only when we have accepted it in writing and received any required deposit. Deposits, balance due dates, and cancellation terms are stated on each quote and rental agreement, which govern the booking.</p>
+
+      <h2>Rental equipment</h2>
+      <p>Equipment remains the property of {site.name}. The renter is responsible for equipment from delivery until pickup, including loss, theft, and damage beyond normal wear. Replacement costs are listed on the rental agreement. Equipment must be kept dry and used as directed.</p>
+
+      <h2>Cancellations and weather</h2>
+      <p>Cancellation and rescheduling terms are set in the rental agreement. Outdoor events must provide cover for equipment. We reserve the right to pause or end service if conditions would damage equipment or endanger staff.</p>
+
+      <h2>Liability</h2>
+      <p>To the extent permitted by law, {site.name} is not liable for indirect or consequential damages arising from use of this website or our services. Our total liability for any booking is limited to the amount paid for that booking.</p>
+
+      <h2>Intellectual property</h2>
+      <p>The text, design, and images on this site belong to {site.name} and may not be reused without permission.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of the State of Alabama.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</Base>

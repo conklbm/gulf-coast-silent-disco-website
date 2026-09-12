@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { site, equipment, pricing, usd } from '../site';
+
+const groups = [
+  {
+    title: 'The basics',
+    items: [
+      { q: 'What is a silent disco?', a: 'A dance party where music plays through wireless headsets instead of speakers. Guests choose between channels and set their own volume. Take the headset off and the room is quiet.' },
+      { q: 'How many channels are there?', a: `${equipment.channels}. Each channel can play different music, so you can run hits, throwbacks, and country at the same time. Headsets glow a different color per channel.` },
+      { q: 'What is the range?', a: 'The transmitters cover a full venue, tent, or stretch of beach. If your event is spread across multiple areas, tell us and we will plan placement.' },
+      { q: 'How long do the batteries last?', a: `${equipment.batteryLife.charAt(0).toUpperCase() + equipment.batteryLife.slice(1)}. Every headset arrives fully charged.` },
+    ],
+  },
+  {
+    title: 'Booking and pricing',
+    items: [
+      { q: 'How much does it cost?', a: `Rental only starts at ${usd(pricing.rentalOnly.startingAt)}. Rental with a DJ starts at ${usd(pricing.djPackage.startingAt)}. Your quote depends on headcount, date, and location.` },
+      { q: 'How many headsets do you have?', a: `${equipment.headphoneCount}. Larger events can be accommodated with advance notice.` },
+      { q: 'How far in advance should I book?', a: 'Two to four weeks is comfortable. Peak wedding season and December fill up faster, so book early if your date is set.' },
+      { q: 'Where do you serve?', a: `The ${site.areaShort}, including ${site.areaLong}. Ask about travel beyond that.` },
+      { q: 'How do I hold a date?', a: 'Request a quote. Booking terms, deposit, and payment details come with it.' },
+    ],
+  },
+  {
+    title: 'Event day',
+    items: [
+      { q: 'Do you set everything up?', a: 'Yes. We deliver, set up, test, hand out, collect, and take it all away.' },
+      { q: 'Can I plug in my own DJ?', a: 'Yes. Transmitters take a standard audio cable from any mixer, laptop, or phone.' },
+      { q: 'Are the headsets clean?', a: 'Every headset is sanitized and inspected between events.' },
+      { q: 'What about rain?', a: 'The equipment needs cover from rain. A tent or covered patio works fine.' },
+      { q: 'What if something gets lost?', a: 'We count units in and out. Lost or damaged headsets are billed at the replacement cost listed on your quote.' },
+    ],
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: groups.flatMap((g) => g.items).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<Base title="Silent Disco FAQ" description={`Answers about silent disco rentals in the ${site.areaShort}: pricing, channels, setup, booking, and what to expect on event day.`} schema={schema}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h1>Frequently asked questions</h1>
+      <p class="lead">Didn't find your answer? <a href="/contact/">Ask us directly.</a></p>
+    </div>
+  </section>
+  <section class="section-tight">
+    <div class="wrap prose">
+      {groups.map((g) => (
+        <>
+          <h2>{g.title}</h2>
+          <Faq items={g.items} />
+        </>
+      ))}
+    </div>
+  </section>
+  <CtaBand />
+</Base>

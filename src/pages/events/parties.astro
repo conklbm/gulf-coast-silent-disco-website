@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site, pricing, usd } from '../../site';
+
+const types = [
+  { title: 'Birthday parties', text: 'Sweet sixteens, 40ths, and everything between. Kids and parents each get their own channel.' },
+  { title: 'School dances & proms', text: 'Volume is capped per headset, and chaperones can hear the room. Schools love it.' },
+  { title: 'Church & youth events', text: 'Clean playlists per channel and clear announcements through the mic.' },
+  { title: 'Bars & venues', text: 'Silent disco nights draw a crowd without a noise complaint. Ask about recurring rates.' },
+  { title: 'Silent yoga & fitness', text: 'Instructor on one channel, music on another. Outdoor classes on the bay work great.' },
+  { title: 'Block parties & festivals', text: 'Neighbor-friendly and works after dark.' },
+];
+---
+
+<Base title="Silent Disco Party Rentals: Birthdays, Schools, Bars & More" description={`Silent disco headset rentals for birthdays, school dances, church events, bar nights, and yoga in the ${site.areaShort}. From ${usd(pricing.rentalOnly.startingAt)} per event.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Parties &amp; more</p>
+      <h1>Silent disco for parties, schools, and everything else</h1>
+      <p class="lead">Anywhere people want to dance and the neighbors don't want to hear it.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-3">
+      {types.map((t) => (
+        <div class="card">
+          <h3>{t.title}</h3>
+          <p class="muted">{t.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="card" style="display: grid; gap: 1.25rem; align-items: center;" data-favors>
+        <img src="/images/party-favors.webp" width="472" height="379" loading="lazy" alt="Glow sticks and LED shutter glasses laid out on a table" style="border-radius: 10px;" />
+        <div>
+          <h3>{pricing.partyFavors.label}</h3>
+          <p class="muted">{pricing.partyFavors.blurb} <a href="/rentals/#favors">See add-ons.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  @media (min-width: 640px) {
+    [data-favors] { grid-template-columns: 240px 1fr; }
+  }
+</style>

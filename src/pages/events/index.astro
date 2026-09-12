@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../site';
+
+const events = [
+  { href: '/events/weddings/', title: 'Weddings', text: 'Beat noise curfews and keep every generation on the floor.' },
+  { href: '/events/corporate/', title: 'Corporate events', text: 'Holiday parties, offsites, and conference after-hours.' },
+  { href: '/events/parties/', title: 'Parties & more', text: 'Birthdays, school dances, church events, bars, and silent yoga.' },
+];
+---
+
+<Base title="Silent Disco Events We Serve" description={`Silent disco for weddings, corporate events, birthdays, school dances, and more across the ${site.areaShort}.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Events</p>
+      <h1>Silent disco for every kind of event</h1>
+      <p class="lead">If people want to dance, a silent disco works. Here are the events we do most.</p>
+    </div>
+  </section>
+  <section class="section-tight">
+    <div class="wrap grid grid-3">
+      {events.map((e) => (
+        <a class="card" href={e.href}>
+          <h3>{e.title}</h3>
+          <p class="muted">{e.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+  <CtaBand />
+</Base>

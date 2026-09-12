@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../site';
+---
+
+<Base title="Corporate Silent Disco Events in Mobile, AL" description={`Silent disco for company parties, offsites, conferences, and team events across the ${site.areaShort}. Delivered, set up, and staffed.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">Corporate</p>
+      <h1>Corporate silent disco events</h1>
+      <p class="lead">A party your team will actually talk about on Monday. Easy to run in a ballroom, an office, or a hotel rooftop.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/contact/">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-3">
+      <div class="card">
+        <h3>Holiday parties</h3>
+        <p class="muted">Three channels means the whole company dances, not just one department.</p>
+      </div>
+      <div class="card">
+        <h3>Conferences</h3>
+        <p class="muted">Silent sessions in shared spaces, or a closing-night party that doesn't bleed into the next ballroom.</p>
+      </div>
+      <div class="card">
+        <h3>Team building</h3>
+        <p class="muted">Silent yoga, trivia, or a guided walking tour. Everyone hears the host clearly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface);">
+    <div class="wrap">
+      <h2>What planners like</h2>
+      <ul class="list-check">
+        <li>One invoice, one vendor: headphones, DJ, and staff</li>
+        <li>Works in venues that ban amplified sound</li>
+        <li>Volume is per person, so nobody complains it's too loud</li>
+        <li>We supply a certificate of insurance on request</li>
+        <li>Net-30 invoicing available for established companies</li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand title="Planning a company event?" text="Send the date, headcount, and venue. We reply within one business day." />
+</Base>

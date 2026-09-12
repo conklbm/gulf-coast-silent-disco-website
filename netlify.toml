@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Kill the duplicate host: send the Netlify subdomain to the canonical domain.
+# TODO: replace SITE_NAME with the actual Netlify site name after creating the site.
+[[redirects]]
+  from = "https://SITE_NAME.netlify.app/*"
+  to = "https://www.gulfcoastsilentdisco.com/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"

@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+---
+
+<Base title="Privacy Policy" description={`How ${site.name} collects, uses, and protects the information you share with us.`}>
+  <section class="section-tight">
+    <div class="wrap prose">
+      <h1>Privacy Policy</h1>
+      <p class="post-meta">Last updated: September 12, 2026</p>
+
+      <h2>What we collect</h2>
+      <p>When you submit our quote form, we collect the information you enter: your name, email address, phone number, event details, and any message you include. We do not collect payment information through this website.</p>
+
+      <h2>How we use it</h2>
+      <p>We use your information only to respond to your request, prepare a quote, and coordinate your event. We do not sell, rent, or share your information with third parties for marketing.</p>
+
+      <h2>Third-party services</h2>
+      <p>Form submissions are processed by Formspree, which delivers them to our email. Fonts are loaded from Google Fonts. The site is hosted on Vercel. Each of these providers may collect standard technical data such as your IP address and browser type as part of delivering the service. We do not use advertising trackers or sell data to advertisers.</p>
+
+      <h2>Cookies</h2>
+      <p>This site does not set cookies of its own. Third-party services above may set cookies necessary to operate.</p>
+
+      <h2>Data retention</h2>
+      <p>We keep quote requests and event records for as long as needed to serve you and for our own bookkeeping. You can ask us to delete your information at any time by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+      <h2>Your rights</h2>
+      <p>You may request a copy of the information we hold about you, ask us to correct it, or ask us to delete it. Contact us at the email above and we will respond within 30 days.</p>
+
+      <h2>Children</h2>
+      <p>This site is not directed at children under 13, and we do not knowingly collect information from them.</p>
+
+      <h2>Changes</h2>
+      <p>We may update this policy from time to time. Changes take effect when posted here with a new date.</p>
+
+      <h2>Contact</h2>
+      <p>{site.name}<br />{site.email}<br />{site.phone}</p>
+    </div>
+  </section>
+</Base>

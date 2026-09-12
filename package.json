@@ -1,0 +1,19 @@
+{
+  "name": "gulf-coast-silent-disco",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.3"
+  }
+}

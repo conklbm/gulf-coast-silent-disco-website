@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../site';
+---
+
+<Base title="About Gulf Coast Silent Disco" description={`Locally owned silent disco rental and DJ company in Mobile, AL. Started by ${site.ownerName} after one very good birthday party.`}>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h1>It started with a birthday party</h1>
+      <p class="lead">{site.ownerName} had never been to a silent disco. He'd only heard they were fun.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items: start;">
+      <div class="prose">
+        <h2>The party that started it</h2>
+        <p>Brooks turned 40 the same year The Mobile Rundown, the local media brand he and his wife ran, turned 12. One party for both seemed right. He'd heard silent discos were a good time, so he rented the equipment and threw one.</p>
+        <p>It was so much fun they bought their own gear. {site.name} is what happened next.</p>
+        <h2>Who you'll work with</h2>
+        <p>Brooks handles every booking personally, from the first quote to pickup at the end of the night. No call center, no subcontractor you've never met.</p>
+        <h2>Where we work</h2>
+        <p>We're based in Mobile and serve {site.areaLong}. If you're a bit farther out, ask. We travel.</p>
+      </div>
+      <img
+        src="/images/two-guests.webp"
+        srcset="/images/two-guests-480.webp 480w, /images/two-guests.webp 899w"
+        sizes="(min-width: 640px) 50vw, 100vw"
+        width="899" height="694" loading="lazy"
+        alt="Two friends laughing in silent disco headsets at the first party"
+        style="border-radius: var(--radius);"
+      />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
