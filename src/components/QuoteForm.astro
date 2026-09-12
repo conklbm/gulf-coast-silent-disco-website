@@ -59,8 +59,10 @@ import { site } from '../site';
     <label for="message">Anything else?</label>
     <textarea id="message" name="message" placeholder="Timeline, indoor or outdoor, questions"></textarea>
   </div>
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
-  <input type="hidden" name="_subject" value="New quote request from gulfcoastsilentdisco.com" />
+  <input type="hidden" name="access_key" value={site.web3formsKey} />
+  <input type="hidden" name="subject" value="New quote request from gulfcoastsilentdisco.com" />
+  <input type="hidden" name="from_name" value="Gulf Coast Silent Disco website" />
+  <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" aria-hidden="true" />
 
   <div class="form-msg" id="form-msg" hidden role="status" aria-live="polite"></div>
 

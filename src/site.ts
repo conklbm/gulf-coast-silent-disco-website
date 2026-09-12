@@ -19,8 +19,9 @@ export const site = {
     instagram: '',
     facebook: '',
   },
-  // Formspree endpoint. Create a form at https://formspree.io and paste its ID.
-  formEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // TODO
+  // Web3Forms. Public access key from https://web3forms.com (safe to expose).
+  formEndpoint: 'https://api.web3forms.com/submit',
+  web3formsKey: 'YOUR_ACCESS_KEY', // TODO
   // Existing Google Form, kept as a fallback link.
   googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLScgSyofi6fPG9TmCLxQfLWQ0RA9MRMKfTSjVhVgAePSwTzaLA/viewform?usp=header',
   founded: 2023, // TODO confirm year of the 40th birthday party

@@ -25,9 +25,10 @@
     var submit = form.querySelector('button[type=submit]');
     if (submit) { submit.disabled = true; submit.textContent = 'Sending\u2026'; }
     fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
-      .then(function (res) {
-        if (res.ok) { form.reset(); show('ok', 'Request sent. We reply within one business day.'); }
-        else show('error', 'Couldn\u2019t send. Try again or use the Google Form link below.');
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data && data.success) { form.reset(); show('ok', 'Request sent. We reply within one business day.'); }
+        else show('error', 'Couldn’t send. Try again or use the Google Form link below.');
       })
       .catch(function () { show('error', 'Couldn\u2019t send. Check your connection and try again.'); })
       .finally(function () { if (submit) { submit.disabled = false; submit.textContent = 'Send request'; } });
