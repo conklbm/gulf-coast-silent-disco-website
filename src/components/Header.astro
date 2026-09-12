@@ -40,12 +40,3 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
   </nav>
 </header>
 
-<script>
-  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
-  const menu = document.getElementById('mobile-nav');
-  btn?.addEventListener('click', () => {
-    const open = menu?.toggleAttribute('data-open');
-    btn.setAttribute('aria-expanded', String(open));
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-</script>

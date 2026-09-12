@@ -1,7 +1,7 @@
 ---
 title: "How a Silent Disco Works"
 description: "What a silent disco is, how the headphones and channels work, and what you need to run one at your own event."
-date: 2026-09-12
+date: 2026-08-20
 ---
 
 A silent disco is a dance party where the music goes to wireless headphones instead of speakers. Everyone on the floor hears the music. Everyone off the floor hears people laughing and shuffling. It looks strange for about thirty seconds and then it's the most fun anyone has had at a party in years.

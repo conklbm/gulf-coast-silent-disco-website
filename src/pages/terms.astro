@@ -31,7 +31,7 @@ import { site } from '../site';
       <p>These terms are governed by the laws of the State of Alabama.</p>
 
       <h2>Contact</h2>
-      <p>Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <p>Questions about these terms: {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : <a href="/contact/">use the contact form</a>}.</p>
     </div>
   </section>
 </Base>

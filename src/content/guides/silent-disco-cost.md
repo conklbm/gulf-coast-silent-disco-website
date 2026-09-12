@@ -1,7 +1,7 @@
 ---
 title: "How Much Does a Silent Disco Cost?"
 description: "What goes into silent disco pricing, where rental-only and DJ packages start, and how to keep the cost down."
-date: 2026-09-12
+date: 2026-09-04
 ---
 
 Silent disco pricing comes down to two questions: how many headsets you need and whether you want a DJ. Everything else is small.

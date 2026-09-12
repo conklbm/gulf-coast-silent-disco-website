@@ -72,37 +72,3 @@ import { site } from '../site';
   </p>
 </form>
 
-<script>
-  const form = document.getElementById('quote-form') as HTMLFormElement | null;
-  const msg = document.getElementById('form-msg') as HTMLDivElement | null;
-  const show = (state: 'ok' | 'error', text: string) => {
-    if (!msg) return;
-    msg.hidden = false;
-    msg.dataset.state = state;
-    msg.textContent = text;
-  };
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form.reportValidity()) return;
-    const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form),
-      });
-      if (res.ok) {
-        form.reset();
-        show('ok', 'Request sent. We reply within one business day.');
-      } else {
-        show('error', 'Couldn’t send. Try again or use the Google Form link below.');
-      }
-    } catch {
-      show('error', 'Couldn’t send. Check your connection and try again.');
-    } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Send request'; }
-    }
-  });
-</script>

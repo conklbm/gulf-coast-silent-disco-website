@@ -1,5 +1,5 @@
 ---
-title: "Silent Disco Wedding Guide: Timeline, Channels, and Tips"
+title: "Silent Disco Wedding Guide"
 description: "How to plan a silent disco wedding reception on the Gulf Coast: when to switch to headphones, how to program three channels, and mistakes to avoid."
 date: 2026-09-12
 ---

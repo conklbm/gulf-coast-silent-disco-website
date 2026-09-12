@@ -1,7 +1,7 @@
 ---
-title: "How Many Silent Disco Headphones Do I Need?"
+title: "How Many Headphones Do I Need?"
 description: "A simple formula for sizing a silent disco headphone rental by event type, with a quick reference table."
-date: 2026-09-12
+date: 2026-08-27
 ---
 
 The short answer: one headphone for every guest who will be on the dance floor at the same time, plus a small cushion. That is usually less than your total guest count, but not by as much as people hope.

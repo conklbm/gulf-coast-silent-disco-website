@@ -5,7 +5,7 @@ Live domain: https://www.gulfcoastsilentdisco.com (canonical is `www`). Replaces
 
 ## Stack
 - Astro (static output, zero client JS except the mobile menu and quote form) + `@astrojs/sitemap`
-- Host: Vercel. `vercel.json` adds security headers and a fail-open noindex on `*.vercel.app`.
+- Host: Netlify (site `gulf-coast-silent-disco`). `netlify.toml` sets build, security headers + CSP, and a 301 from the `.netlify.app` host to the canonical domain.
 - Forms: Formspree, endpoint in `src/site.ts`. Form posts via fetch with inline success/error.
 - No framework, no CSS library. One stylesheet: `src/styles/global.css`.
 
