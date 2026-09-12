@@ -10,6 +10,12 @@
   status = 301
   force = true
 
+# Astro emits sitemap-index.xml; give crawlers the conventional path too.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
