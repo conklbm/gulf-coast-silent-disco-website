@@ -3,9 +3,9 @@
   publish = "dist"
 
 # Kill the duplicate host: send the Netlify subdomain to the canonical domain.
-# TODO: replace SITE_NAME with the actual Netlify site name after creating the site.
+# TODO: replace gulf-coast-silent-disco with the actual Netlify site name after creating the site.
 [[redirects]]
-  from = "https://SITE_NAME.netlify.app/*"
+  from = "https://gulf-coast-silent-disco.netlify.app/*"
   to = "https://www.gulfcoastsilentdisco.com/:splat"
   status = 301
   force = true
